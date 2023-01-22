@@ -9,13 +9,8 @@ module.exports = function (app) {
 
   app.route('/api/convert').get((req, res) => {
     let input = req.query.input;
-    console.log("\ninput : " + input);
     let initNum = convertHandler.getNum(input);
-    let initUnit = convertHandler.getUnit(input).toLowerCase();
-    if (initUnit === 'l') initUnit = 'L';
-    if (initUnit === '') {
-      initUnit = 'invalid';
-    }
+    let initUnit = convertHandler.getUnit(input);
     let returnNum;
     let returnUnit;
     if (initNum === 'invalid' && (initUnit === 'invalid' || convertHandler.getReturnUnit(initUnit) === 'invalid')) {

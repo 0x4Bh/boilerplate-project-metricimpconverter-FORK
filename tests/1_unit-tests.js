@@ -6,42 +6,42 @@ let convertHandler = new ConvertHandler();
 
 suite('Unit Tests', function(){
     suite('Basic Assertions', function(){
-        test('convertHandler should correctly read a whole number input.', function(){
+        test('1. convertHandler should correctly read a whole number input.', function(){
             let input = '10L';
             assert.equal(convertHandler.getNum(input), 10, "Failed!");
         });
-        test('convertHandler should correctly read a decimal number input.', function(){
+        test('2. convertHandler should correctly read a decimal number input.', function(){
             let input = '10.5kg';
             assert.equal(convertHandler.getNum(input), 10.5, "Failed!");
         });
-        test('convertHandler should correctly read a fractional input.', function(){
+        test('3. convertHandler should correctly read a fractional input.', function(){
             let input = '10/7gal';
             assert.equal(convertHandler.getNum(input), 10/7, "Failed!");
         });
-        test('convertHandler should correctly read a fractional input with a decimal.', function(){
+        test('4. convertHandler should correctly read a fractional input with a decimal.', function(){
             let input = '10.3/3.7mi';
             assert.equal(convertHandler.getNum(input), 10.3/3.7, "Failed!");
         });
-        test('convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).', function(){
+        test('5. convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).', function(){
             let input = '3/2/3';
             assert.equal(convertHandler.getNum(input), 'invalid', "Failed!");
         });
-        test('convertHandler should correctly default to a numerical input of 1 when no numerical input is provided.',function(){
+        test('6. convertHandler should correctly default to a numerical input of 1 when no numerical input is provided.',function(){
             let input = 'kg';
             assert.equal(convertHandler.getNum(input), 1, "Failed!");
         });
-        test('convertHandler should correctly read each valid input unit.', function(){
+        test('7. convertHandler should correctly read each valid input unit.', function(){
             let input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
             input.forEach(unit => {
                 if (unit === 'l' || unit === 'L') assert.equal(convertHandler.getUnit(unit), 'L', "Failed on 'l'!");
                 else assert.equal(convertHandler.getUnit(unit), unit.toLowerCase(), `Failed on ${unit}`);
             });
         });
-        test('convertHandler should correctly return an error for an invalid input unit.', function(){
+        test('8. convertHandler should correctly return an error for an invalid input unit.', function(){
             let input = 'invUnit';
             assert.equal(convertHandler.getUnit(input), 'invalid', "Failed!");
         });
-        test('convertHandler should return the correct return unit for each valid input unit.', function(){
+        test('9. convertHandler should return the correct return unit for each valid input unit.', function(){
             let input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
             input.forEach(unit => {
                 switch (unit) {
@@ -61,7 +61,7 @@ suite('Unit Tests', function(){
                   }
             });
         });
-        test('convertHandler should correctly return the spelled-out string unit for each valid input unit.', function(){
+        test('10. convertHandler should correctly return the spelled-out string unit for each valid input unit.', function(){
             let input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
             input.forEach(unit => {
                 switch(unit.toLowerCase()){
@@ -75,27 +75,27 @@ suite('Unit Tests', function(){
                 }
             });
         });
-        test('convertHandler should correctly convert gal to L.', function(){
+        test('11. convertHandler should correctly convert gal to L.', function(){
             let initUnit = 'gal';
             assert.equal(convertHandler.getReturnUnit(initUnit), 'L', "Failed!");
         });
-        test('convertHandler should correctly convert L to gal.', function(){
+        test('12. convertHandler should correctly convert L to gal.', function(){
             let initUnit = 'L';
             assert.equal(convertHandler.getReturnUnit(initUnit), 'gal', "Failed!");
         });
-        test('convertHandler should correctly convert mi to km.', function(){
+        test('13. convertHandler should correctly convert mi to km.', function(){
             let initUnit = 'mi';
             assert.equal(convertHandler.getReturnUnit(initUnit), 'km', "Failed!");
         });
-        test('convertHandler should correctly convert km to mi.', function(){
+        test('14. convertHandler should correctly convert km to mi.', function(){
             let initUnit = 'km';
             assert.equal(convertHandler.getReturnUnit(initUnit), 'mi', "Failed!");
         });
-        test('convertHandler should correctly convert lbs to kg.', function(){
+        test('15. convertHandler should correctly convert lbs to kg.', function(){
             let initUnit = 'lbs';
             assert.equal(convertHandler.getReturnUnit(initUnit), 'kg', "Failed!");
         });
-        test('convertHandler should correctly convert kg to lbs.', function(){
+        test('16. convertHandler should correctly convert kg to lbs.', function(){
             let initUnit = 'kg';
             assert.equal(convertHandler.getReturnUnit(initUnit), 'lbs', "Failed!");
         });
